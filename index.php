@@ -1,12 +1,15 @@
 <?php
 
 setlocale(LC_CTYPE, 'en_US.UTF-8');
+//date_default_timezone_set ('Etc/GMT-9');
 
 $debug_message = '';
 $error_message = '';
 $output = '';
 
 $pwd = $_ENV["PWD"];
+//$pwd = dirname (__FILE__);
+//$data_dir = dirname (__FILE__) . '/d';
 
 function error ($message)
 {
@@ -64,13 +67,14 @@ function l($disp, $addr, $args=array())
 	return $ret;
 }
 
-$q = '';
-if (isset ($_GET['q']))
-	$q = $_GET['q'];
+if (isset ($_REQUEST['do']))
+        $do = $_REQUEST['do'];
+else
+        $do = "nothing";
+$args = explode ("/", $do);
 
-$arg = explode ('/', trim ($q));
-$output .= "q : \"$q\"";
-$output .= "arg : " . print_r ($q, TRUE);
+$output .= "do : \"$do\"";
+$output .= "args : " . print_r ($args, TRUE);
 
 //if ($get_src)
 if (0)
