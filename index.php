@@ -7,8 +7,8 @@ $debug_message = '';
 $error_message = '';
 $output = '';
 
-$pwd = $_ENV["PWD"];
-//$pwd = dirname (__FILE__);
+//$pwd = $_ENV["PWD"];
+$pwd = dirname (__FILE__);
 //$data_dir = dirname (__FILE__) . '/d';
 
 function error ($message)
@@ -73,8 +73,13 @@ else
         $do = "nothing";
 $args = explode ("/", $do);
 
-$output .= "do : \"$do\"";
-$output .= "args : " . print_r ($args, TRUE);
+$output .= "do : \"$do\"<br />";
+$output .= "args : " . print_r ($args, TRUE) ."<br />";
+
+setcookie("color","red");
+$output .= "cookie color : ".$_COOKIE["color"]."<br />";
+//setcookie("color","blue");
+$output .= "cookie color : ".$_COOKIE["color"]."<br />";
 
 //if ($get_src)
 if (0)
